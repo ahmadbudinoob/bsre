@@ -3,40 +3,36 @@ import { IsNotEmpty } from 'class-validator';
 
 export class SignQRCoordinateDto {
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'NIK is required' })
   nik: string;
 
   @ApiProperty()
-  @IsNotEmpty()
-  file: any;
-
-  @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Passphrase is required' })
   passphrase: string;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Width is required' })
   width: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Height is required' })
   height: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Koordinat is required' })
   kordinat: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  visible: boolean;
+  tampilan: string;
+
+  image: string;
 
   @ApiProperty()
-  @IsNotEmpty()
-  image: boolean;
+  @IsNotEmpty({ message: 'Link QR is required' })
+  linkQR: string;
 
   constructor(partial: Partial<SignQRCoordinateDto>) {
+    this.tampilan = 'visible';
+    this.image = 'false';
     Object.assign(this, partial);
-    this.visible = true;
-    this.image = false;
   }
 }
